@@ -1,0 +1,977 @@
+/* ============================================================
+   WOMEN'S DAY — DISHU ❤️  |  style.css
+   Premium · Cinematic · Romantic
+   ============================================================ */
+
+/* ── Google Fonts already linked in HTML ── */
+
+/* ────────────────────────────────────────────
+   1. CSS VARIABLES
+──────────────────────────────────────────── */
+:root {
+  --rain:         #FFDBE9;
+  --rain-glow:    rgba(255, 219, 233, 0.35);
+  --accent:       #FFDBE9;
+  --accent-dim:   rgba(255, 219, 233, 0.18);
+  --rose:         #e85d8a;
+  --rose-dim:     rgba(232, 93, 138, 0.25);
+  --gold:         #f0c674;
+  --bg:           #050810;
+  --bg2:          #080c14;
+  --surface:      rgba(12, 20, 32, 0.72);
+  --glass:        rgba(255,255,255,0.04);
+  --border:       rgba(255, 219, 233, 0.18);
+  --border-rose:  rgba(232, 93, 138, 0.22);
+  --text:         #e8eaf0;
+  --text-dim:     rgba(232, 234, 240, 0.65);
+  --text-muted:   rgba(232, 234, 240, 0.38);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-cursive: 'Great Vibes', cursive;
+  --font-body:    'Poppins', sans-serif;
+  --radius:       20px;
+  --card-shadow:  0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px var(--border);
+  --transition:   all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ────────────────────────────────────────────
+   2. RESET & BASE
+──────────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ────────────────────────────────────────────
+   3. RAIN CANVAS
+──────────────────────────────────────────── */
+#rainCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* ────────────────────────────────────────────
+   4. LIGHTNING
+──────────────────────────────────────────── */
+#lightning {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: rgba(200, 230, 255, 0);
+  transition: background 0.05s;
+}
+#lightning.flash {
+  animation: lightningFlash 0.25s ease-out;
+}
+@keyframes lightningFlash {
+  0%   { background: rgba(200,230,255,0); }
+  15%  { background: rgba(200,230,255,0.12); }
+  30%  { background: rgba(200,230,255,0.05); }
+  50%  { background: rgba(200,230,255,0.18); }
+  100% { background: rgba(200,230,255,0); }
+}
+
+/* ────────────────────────────────────────────
+   5. FLOATING HEARTS BG
+──────────────────────────────────────────── */
+#floatingHeartsContainer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.float-heart {
+  position: absolute;
+  bottom: -60px;
+  font-size: 1.1rem;
+  opacity: 0;
+  animation: floatUp var(--dur, 8s) var(--delay, 0s) ease-in infinite;
+  filter: drop-shadow(0 0 6px var(--rose));
+}
+@keyframes floatUp {
+  0%   { transform: translateY(0)    rotate(0deg)   scale(1);   opacity:0;    }
+  10%  { opacity: 0.5; }
+  80%  { opacity: 0.25; }
+  100% { transform: translateY(-110vh) rotate(360deg) scale(0.6); opacity:0; }
+}
+
+/* ────────────────────────────────────────────
+   6. MUSIC BUTTON
+──────────────────────────────────────────── */
+.music-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px 10px 14px;
+  background: rgba(8,14,24,0.85);
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  color: var(--accent);
+  box-shadow: 0 0 20px var(--rain-glow), 0 4px 20px rgba(0,0,0,0.4);
+  transition: var(--transition);
+  user-select: none;
+}
+.music-btn:hover {
+  box-shadow: 0 0 35px var(--rain-glow), 0 4px 24px rgba(0,0,0,0.5);
+  transform: scale(1.05);
+  border-color: var(--accent);
+}
+.music-icon { display:flex; align-items:center; }
+.music-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* ────────────────────────────────────────────
+   7. SITE WRAPPER & PAGES
+──────────────────────────────────────────── */
+.site-wrapper {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+}
+
+.page {
+  display: none;
+  min-height: 100vh;
+  position: relative;
+  padding: 0 24px;
+}
+.page.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pageFadeIn 0.9s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes pageFadeIn {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ────────────────────────────────────────────
+   8. DECORATIVE ORBS
+──────────────────────────────────────────── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+.orb1 {
+  width: 420px; height: 420px;
+  top: -100px; right: -80px;
+  background: radial-gradient(circle, rgba(255, 219, 233, 0.12), transparent 70%);
+  animation: orbFloat 10s ease-in-out infinite alternate;
+}
+.orb2 {
+  width: 380px; height: 380px;
+  bottom: -80px; left: -60px;
+  background: radial-gradient(circle, rgba(232,93,138,0.10), transparent 70%);
+  animation: orbFloat 12s ease-in-out infinite alternate-reverse;
+}
+@keyframes orbFloat {
+  from { transform: translate(0,0)    scale(1); }
+  to   { transform: translate(30px,20px) scale(1.08); }
+}
+
+/* ────────────────────────────────────────────
+   9. BUTTON STYLES
+──────────────────────────────────────────── */
+.glow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, rgba(255, 219, 233, 0.14), rgba(255, 219, 233, 0.05));
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 18px rgba(255, 219, 233, 0.15);
+}
+.glow-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 219, 233, 0.22), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.glow-btn:hover::before { opacity: 1; }
+.glow-btn:hover {
+  box-shadow: 0 0 36px rgba(255, 219, 233, 0.35), 0 8px 30px rgba(0,0,0,0.4);
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+.glow-btn span { position: relative; z-index:1; }
+.glow-btn svg  { position: relative; z-index:1; flex-shrink:0; }
+
+/* ────────────────────────────────────────────
+   10. PAGE 1 — LANDING
+──────────────────────────────────────────── */
+.page-landing { flex-direction: column; text-align: center; }
+
+.landing-center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 48px 24px;
+}
+
+.womens-day-tag {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  padding: 6px 18px;
+  border-radius: 30px;
+  background: var(--accent-dim);
+  backdrop-filter: blur(8px);
+  animation: tagAppear 1s 0.3s both;
+}
+@keyframes tagAppear {
+  from { opacity:0; transform:scale(0.9); }
+  to   { opacity:1; transform:scale(1); }
+}
+
+.landing-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 7vw, 5.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  animation: titleAppear 1s 0.5s both;
+  text-shadow: 0 0 60px rgba(255,255,255,0.08);
+}
+@keyframes titleAppear {
+  from { opacity:0; transform:translateY(30px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.name-highlight {
+  display: block;
+  font-family: var(--font-cursive);
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 400;
+  background: linear-gradient(135deg, var(--accent) 0%, #FFDBE9 50%, var(--rose) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 22px rgba(255, 219, 233, 0.4));
+  animation: nameGlow 3s ease-in-out infinite alternate;
+}
+@keyframes nameGlow {
+  from { filter: drop-shadow(0 0 22px rgba(255, 219, 233, 0.35)); }
+  to   { filter: drop-shadow(0 0 38px rgba(255, 219, 233, 0.65)); }
+}
+
+.heart-pulse {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  animation: heartPulse 1.8s ease-in-out infinite;
+  display: inline-block;
+  filter: drop-shadow(0 0 14px rgba(232,93,138,0.7));
+}
+@keyframes heartPulse {
+  0%,100% { transform: scale(1); filter: drop-shadow(0 0 14px rgba(232,93,138,0.7)); }
+  50%      { transform: scale(1.18); filter: drop-shadow(0 0 30px rgba(232,93,138,0.95)); }
+}
+
+.landing-sub {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(0.95rem, 2.4vw, 1.25rem);
+  color: var(--text-dim);
+  animation: subAppear 1s 0.8s both;
+  letter-spacing: 0.02em;
+}
+@keyframes subAppear {
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ────────────────────────────────────────────
+   11. PAGE 2 — APOLOGY
+──────────────────────────────────────────── */
+.page-apology {
+  flex-direction: column;
+  text-align: center;
+  padding-bottom: 80px;
+}
+
+.apology-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 56px 32px 48px;
+  background: var(--glass);
+  border: 1px solid var(--border-rose);
+  border-radius: 28px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 0 60px rgba(232,93,138,0.12), inset 0 1px 0 rgba(255,255,255,0.06);
+  max-width: 640px;
+  width: 100%;
+  animation: apologyReveal 0.9s 0.2s both;
+}
+@keyframes apologyReveal {
+  from { opacity:0; transform:scale(0.92) translateY(20px); }
+  to   { opacity:1; transform:scale(1)    translateY(0); }
+}
+
+.apology-glow-ring {
+  position: absolute;
+  inset: -2px;
+  border-radius: 30px;
+  border: 1.5px solid transparent;
+  background: linear-gradient(135deg, var(--rose-dim), transparent, var(--rose-dim)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: ringPulse 3s ease-in-out infinite;
+}
+@keyframes ringPulse {
+  0%,100% { opacity: 0.5; }
+  50%      { opacity: 1; }
+}
+
+.apology-icon {
+  font-size: 2.8rem;
+  animation: iconFloat 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(232,93,138,0.6));
+}
+@keyframes iconFloat {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-8px); }
+}
+
+.apology-line1 {
+  font-family: var(--font-cursive);
+  font-size: 1.8rem;
+  color: var(--accent);
+  text-shadow: 0 0 18px var(--rain-glow);
+}
+
+.apology-main {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+  text-shadow: 0 0 40px rgba(255,255,255,0.1);
+}
+
+.apology-name {
+  font-family: var(--font-cursive);
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  color: var(--rose);
+  filter: drop-shadow(0 0 10px rgba(232,93,138,0.5));
+}
+.apology-name em { font-style: normal; }
+
+.apology-next {
+  margin-top: 28px;
+  z-index: 2;
+}
+
+/* ────────────────────────────────────────────
+   12. PAGE 3 — CARDS TIMELINE
+──────────────────────────────────────────── */
+.page-cards {
+  display: block !important;
+  padding: 60px 24px 80px;
+}
+
+.cards-timeline {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Timeline spine */
+.cards-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg,
+    transparent,
+    var(--border) 8%,
+    var(--border) 92%,
+    transparent
+  );
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ────────────────────────────────────────────
+   13. STORY CARDS
+──────────────────────────────────────────── */
+.story-card {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1),
+              transform 0.8s cubic-bezier(0.22,1,0.36,1);
+  max-width: 680px;
+  width: 100%;
+}
+.story-card.card-right {
+  align-self: flex-end;
+  transform: translateX(40px);
+}
+.story-card.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.card-inner {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(18px);
+  transition: transform 0.5s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.5s cubic-bezier(0.22,1,0.36,1),
+              border-color 0.4s;
+  position: relative;
+}
+.card-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: radial-gradient(ellipse at top left, rgba(255, 219, 233, 0.05), transparent 60%);
+  pointer-events: none;
+}
+.card-inner:hover {
+  transform: translateY(-6px) scale(1.005);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.65),
+              0 0 0 1px var(--accent),
+              0 0 50px rgba(255, 219, 233, 0.2);
+  border-color: var(--accent);
+}
+
+/* ── Card Inner — horizontal layout ── */
+.card-inner {
+  display: flex !important;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+}
+
+/* ── Card Image Panel ── */
+.card-image-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 210px;
+  min-height: 100%;
+  background: linear-gradient(160deg, #060f10 0%, #040a0d 100%);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+  padding: 20px 12px;
+}
+
+/* ── Dot-grid background texture ── */
+.card-image-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 219, 233, 0.10) 1px, transparent 1px);
+  background-size: 18px 18px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+}
+
+/* ── Radial glow centre ── */
+.card-img-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(255, 219, 233, 0.09) 0%, transparent 68%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Corner bracket accents ── */
+.card-image-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    /* top-left corner */
+    linear-gradient(to right,  rgba(255, 219, 233, 0.45) 12px, transparent 12px) top    left  / 100% 1.5px no-repeat,
+    linear-gradient(to bottom, rgba(255, 219, 233, 0.45) 12px, transparent 12px) top    left  / 1.5px 100% no-repeat,
+    /* top-right corner */
+    linear-gradient(to left,   rgba(255, 219, 233, 0.45) 12px, transparent 12px) top    right / 100% 1.5px no-repeat,
+    linear-gradient(to bottom, rgba(255, 219, 233, 0.45) 12px, transparent 12px) top    right / 1.5px 100% no-repeat,
+    /* bottom-left corner */
+    linear-gradient(to right,  rgba(255, 219, 233, 0.45) 12px, transparent 12px) bottom left  / 100% 1.5px no-repeat,
+    linear-gradient(to top,    rgba(255, 219, 233, 0.45) 12px, transparent 12px) bottom left  / 1.5px 100% no-repeat,
+    /* bottom-right corner */
+    linear-gradient(to left,   rgba(255, 219, 233, 0.45) 12px, transparent 12px) bottom right / 100% 1.5px no-repeat,
+    linear-gradient(to top,    rgba(255, 219, 233, 0.45) 12px, transparent 12px) bottom right / 1.5px 100% no-repeat;
+}
+
+/* ── Inner frame — the actual photo box ── */
+.card-img-frame {
+  width: 150px;
+  height: 150px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #07131a;
+  border: 1px solid rgba(255, 219, 233, 0.22);
+  box-shadow:
+    0 0 22px rgba(255, 219, 233, 0.14),
+    inset 0 0 14px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  transition: box-shadow 0.4s, border-color 0.4s;
+}
+.card-inner:hover .card-img-frame {
+  border-color: rgba(255, 219, 233, 0.5);
+  box-shadow: 0 0 34px rgba(255, 219, 233, 0.28), inset 0 0 10px rgba(0,0,0,0.3);
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  opacity: 0.93;
+  transition: transform 0.7s cubic-bezier(0.22,1,0.36,1), opacity 0.4s;
+}
+.card-inner:hover .card-img {
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+/* ── "Add photo" label below frame ── */
+.card-img-label {
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 219, 233, 0.38);
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.card-img-label::before,
+.card-img-label::after {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: rgba(255, 219, 233, 0.25);
+}
+
+.card-img-overlay { display: none; }
+
+/* ── Card number — top-left ── */
+.card-number {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: rgba(255, 219, 233, 0.28);
+  line-height: 1;
+  pointer-events: none;
+  letter-spacing: 0.08em;
+  z-index: 3;
+  border: 1px solid rgba(255, 219, 233, 0.15);
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(255, 219, 233, 0.05);
+  backdrop-filter: blur(4px);
+}
+
+/* ── Card Content ── */
+.card-content {
+  flex: 1;
+  padding: 24px 26px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.card-emoji {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 8px rgba(255, 219, 233, 0.5));
+  animation: emojiFloat 3s ease-in-out infinite;
+}
+@keyframes emojiFloat {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-5px); }
+}
+
+.card-text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--text-dim);
+  letter-spacing: 0.01em;
+}
+.card-text em {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--accent);
+}
+.card-text strong {
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ────────────────────────────────────────────
+   14. FINAL CARD
+──────────────────────────────────────────── */
+.final-card {
+  max-width: 100%;
+  align-self: center;
+  transform: translateY(40px) !important;
+}
+.final-card.visible {
+  transform: translateY(0) !important;
+}
+
+.final-card-inner {
+  background: linear-gradient(145deg,
+    rgba(12,20,32,0.92) 0%,
+    rgba(8,14,24,0.95) 100%
+  );
+  border: 1px solid var(--border-rose);
+  border-radius: 28px;
+  padding: 64px 40px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 80px rgba(232,93,138,0.15),
+    0 40px 100px rgba(0,0,0,0.7),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.final-card-inner::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:28px;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(255, 219, 233, 0.08), transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(232,93,138,0.08), transparent 50%);
+  pointer-events:none;
+}
+
+.final-womens-tag {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 28px;
+  opacity: 0.8;
+}
+
+.final-heart-pulse {
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  animation: heartPulse 1.6s ease-in-out infinite;
+  display: inline-block;
+  filter: drop-shadow(0 0 20px rgba(232,93,138,0.85));
+  margin-bottom: 12px;
+}
+
+.final-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5.5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 40px rgba(255,255,255,0.12);
+  margin-bottom: 4px;
+}
+
+.final-name {
+  font-family: var(--font-cursive);
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-weight: 400;
+  background: linear-gradient(135deg, var(--rose) 0%, #f7a8c5 40%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 24px rgba(232,93,138,0.5));
+  margin-bottom: 20px;
+  animation: nameGlow2 3s ease-in-out infinite alternate;
+}
+@keyframes nameGlow2 {
+  from { filter: drop-shadow(0 0 18px rgba(232,93,138,0.45)); }
+  to   { filter: drop-shadow(0 0 40px rgba(232,93,138,0.75)); }
+}
+
+.final-message {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 3vw, 1.65rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--text-dim);
+  margin-bottom: 28px;
+}
+.love-word {
+  font-style: normal;
+  color: var(--rose);
+  font-weight: 600;
+  filter: drop-shadow(0 0 8px rgba(232,93,138,0.6));
+}
+
+.final-floating-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.final-sig {
+  font-family: var(--font-cursive);
+  font-size: 1.6rem;
+  color: var(--accent);
+  filter: drop-shadow(0 0 10px var(--rain-glow));
+  margin-top: 8px;
+}
+
+/* Heart Explosion Particles */
+#heartExplosion {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+.burst-heart {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: burstOut var(--d, 1.2s) var(--delay,0s) ease-out both;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+}
+@keyframes burstOut {
+  0%   { opacity:1; transform:translate(-50%,-50%) translate(0,0) scale(0.3); }
+  60%  { opacity:0.8; }
+  100% { opacity:0; transform:translate(-50%,-50%) translate(var(--tx),var(--ty)) scale(1.2); }
+}
+
+/* ────────────────────────────────────────────
+   15. SCROLL DOWN HINT (arrow)
+──────────────────────────────────────────── */
+.scroll-hint {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: hintBounce 2s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes hintBounce {
+  0%,100% { transform:translateX(-50%) translateY(0); opacity:0.6; }
+  50%     { transform:translateX(-50%) translateY(6px); opacity:1; }
+}
+
+/* ────────────────────────────────────────────
+   16. CUSTOM SCROLLBAR
+──────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent), var(--rose));
+  border-radius: 3px;
+}
+
+/* ────────────────────────────────────────────
+   17. SELECTION STYLE
+──────────────────────────────────────────── */
+::selection {
+  background: rgba(255, 219, 233, 0.25);
+  color: var(--text);
+}
+
+/* ────────────────────────────────────────────
+   18. PAGE 3 HIDDEN UNTIL ACTIVE
+──────────────────────────────────────────── */
+.page-cards {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.page-cards.active {
+  opacity: 1;
+}
+
+/* ────────────────────────────────────────────
+   19. RESPONSIVE
+──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .cards-timeline::before { display: none; }
+
+  .story-card,
+  .story-card.card-right {
+    max-width: 100%;
+    align-self: center;
+    transform: translateY(30px);
+  }
+  .story-card.visible,
+  .story-card.card-right.visible {
+    transform: translateY(0);
+  }
+
+  /* Stack image on top, text below on mobile */
+  .card-inner {
+    flex-direction: column !important;
+  }
+  .card-image-wrap {
+    width: 100%;
+    min-height: 160px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0 14px;
+    flex-direction: column;
+  }
+  .card-img-frame {
+    width: 120px;
+    height: 120px;
+  }
+
+  .card-content { padding: 20px 18px 22px; }
+  .card-text    { font-size: 0.84rem; }
+
+  .music-btn { bottom: 16px; right: 16px; padding: 9px 14px 9px 12px; }
+  .music-label { display: none; }
+
+  .final-card-inner { padding: 40px 24px 40px; }
+
+  .apology-container { padding: 40px 24px 36px; }
+
+  .glow-btn { padding: 12px 24px; font-size: 0.8rem; }
+}
+
+@media (max-width: 480px) {
+  .landing-title { line-height: 1.2; }
+  .cards-timeline { gap: 48px; }
+  .card-image-wrap { aspect-ratio: 4/3; }
+}
+
+/* ────────────────────────────────────────────
+   20. CARD ENTRANCE ANIMATION VARIANTS
+──────────────────────────────────────────── */
+.story-card:nth-child(odd).visible  { animation: slideLeft 0.85s cubic-bezier(0.22,1,0.36,1) both; }
+.story-card:nth-child(even).visible { animation: slideRight 0.85s cubic-bezier(0.22,1,0.36,1) both; }
+
+@keyframes slideLeft {
+  from { opacity:0; transform:translateX(-40px) translateY(10px); }
+  to   { opacity:1; transform:translateX(0)     translateY(0); }
+}
+@keyframes slideRight {
+  from { opacity:0; transform:translateX(40px) translateY(10px); }
+  to   { opacity:1; transform:translateX(0)    translateY(0); }
+}
+
+/* ────────────────────────────────────────────
+   21. IMAGE FRAME PLACEHOLDER
+──────────────────────────────────────────── */
+.card-img-frame::after {
+  content: '📸';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+.card-img { position: relative; z-index: 1; }
+
+/* ────────────────────────────────────────────
+   23. APOLOGY PAGE LINES
+──────────────────────────────────────────── */
+.line1 { font-family: var(--font-cursive); font-size:1.8rem; color:var(--accent); }

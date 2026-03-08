@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Women's Day — Dishu ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Rain Canvas -->
+    <canvas id="rainCanvas"></canvas>
+
+    <!-- Lightning overlay -->
+    <div id="lightning"></div>
+
+    <!-- Floating Hearts Background -->
+    <div id="floatingHeartsContainer"></div>
+
+    <!-- Music Control -->
+    <div class="music-btn" id="musicBtn" title="Play / Pause Music">
+      <audio id="bgMusic" loop>
+        <source src="audio/music.mp3" type="audio/mp3" />
+      </audio>
+      <div class="music-icon" id="musicIcon">
+        <svg
+          id="playIcon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          width="22"
+          height="22"
+        >
+          <path d="M8 5v14l11-7z" />
+        </svg>
+        <svg
+          id="pauseIcon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          width="22"
+          height="22"
+          style="display: none"
+        >
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+        </svg>
+      </div>
+      <span class="music-label">Music</span>
+    </div>
+
+    <!-- MAIN WRAPPER -->
+    <div class="site-wrapper" id="siteWrapper">
+      <!-- =================== PAGE 1: LANDING =================== -->
+      <section class="page page-landing active" id="page1">
+        <div class="landing-center">
+          <div class="womens-day-tag">8th March · Women's Day</div>
+          <h1 class="landing-title">
+            Happy Women's Day
+            <span class="name-highlight">Dishu</span>
+          </h1>
+          <div class="heart-pulse" aria-label="heart">❤️</div>
+          <p class="landing-sub">A night just for you, under the rain...</p>
+          <button class="next-btn glow-btn" onclick="goToPage(2)">
+            <span>Begin Our Story</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        <!-- Decorative orbs -->
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+      </section>
+
+      <!-- =================== PAGE 2: APOLOGY =================== -->
+      <section class="page page-apology" id="page2">
+        <div class="apology-container">
+          <div class="apology-icon">🌸</div>
+          <p class="apology-line line1">Arey ruko ruko…</p>
+          <h2 class="apology-main">
+            sorry thoda late ho gya<br />wish krne me
+          </h2>
+          <p class="apology-name">maff krna <em>Baby doll</em> 🥺</p>
+          <div class="apology-glow-ring"></div>
+        </div>
+        <button class="next-btn glow-btn apology-next" onclick="goToPage(3)">
+          <span>Continue</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </button>
+      </section>
+
+      <!-- =================== CARDS SECTION =================== -->
+      <section class="page page-cards" id="page3">
+        <div class="cards-timeline">
+          <!-- CARD 1 -->
+          <div class="story-card" id="card1">
+            <div class="card-inner">
+              <div class="card-image-wrap">
+                <div class="card-img-glow"></div>
+                <div class="card-img-frame">
+                  <img
+                    src="images/photo1.jpeg"
+                    alt="Our Moment"
+                    class="card-img"
+                  />
+                </div>
+                <div class="card-img-label">Our Moment</div>
+                <div class="card-number">01</div>
+              </div>
+              <div class="card-content">
+                <div class="card-emoji">🌙✨</div>
+                <p class="card-text">
+                  Aaj ka din special hai, par mere liye tum
+                  <em>har din special</em> h. Kabhi kabhi sochta hu ki meri life
+                  me apka aana kitni beautiful cheez hai. Apki smile me ek alag
+                  hi sukoon hai 😊, apki baaton me ek hot warmth hai 💫, aur
+                  apka caring nature dil ko sach me touch kar jata hai ❤️. Ap
+                  sirf gorgeous hi nahi ho Baby 😍, ap dil se bhi utni hi
+                  beautiful ho. Shayad isi liye ap dheere dheere meri life ka
+                  sabse important part ban gayi ho. 🌙
+                </p>
+                <p class="card-text">
+                  Aur haan meri <strong>KitKat paglu</strong> 🍫😄 mujhe pata
+                  hai apko kitni pasand hai wo… kabhi kabhi lagta hai apka aur
+                  KitKat ka alag hi connection hai 🤭. Aur meri
+                  <strong>waffle paglu</strong> 🧇😋 bhi ho ap, kyunki apki
+                  chhoti chhoti happiness aur cute si excitement dekh ke dil aur
+                  zyada attach ho jata hai apse. 💕
+                </p>
+                <p class="card-text">
+                  Aur baby ek waffle pending hai 🧇😉, wo bhi jaldi complete kar
+                  dunga… aur KitKat to pakka dilake dunga 🍫🥰 kyunki meri paglu
+                  ko khush dekhna hi meri sabse badi happiness hai. ❤️✨
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2 -->
+          <div class="story-card card-right" id="card2">
+            <div class="card-inner">
+              <div class="card-image-wrap">
+                <div class="card-img-glow"></div>
+                <div class="card-img-frame">
+                  <img
+                    src="images/photo2.jpeg"
+                    alt="Us Together"
+                    class="card-img"
+                  />
+                </div>
+                <div class="card-img-label">Us Together</div>
+                <div class="card-number">02</div>
+              </div>
+              <div class="card-content">
+                <div class="card-emoji">🌸💫</div>
+                <p class="card-text">
+                  Par sach kahu baby… main bhi thoda <em>Dishu paglu</em> ho
+                  gaya hu 🥺❤️. Pata nahi kaise, par apki care, apki smile aur
+                  apki simplicity ne mujhe itna attach kar diya hai ki ab har
+                  chhoti cheez me ap yaad aa jati ho. 🌸💫
+                </p>
+                <p class="card-text">
+                  Main bas ye chahta hu ki ap hamesha khush raho 😊✨, hamesha
+                  aise hi haste raho 😄💖. Aur agar kabhi life me koi tough
+                  moment aaye na, to bas itna yaad rakhna ki main hamesha apke
+                  saath khada rahunga 🤝❤️ — apki baat sunne ke liye 👂, apko
+                  support karne ke liye 💪, aur apko protect karne ke liye 🫶.
+                </p>
+                <p class="card-text">
+                  Baby, ap sirf meri life ki beautiful part hi nahi ho… ap meri
+                  life ka wo <strong>moon</strong> ho jo meri har raat ko roshan
+                  karta hai. 🌙✨💞 Isliye Women's Day par bas itna kehna hai —
+                  thank you meri life me aane ke liye 🙏💖 aur meri duniya ko
+                  itna pyaara banane ke liye. 🌎💫
+                </p>
+                <p class="card-text">
+                  <em
+                    >I love you meri KitKat paglu 🍫, waffle paglu 🧇… aur meri
+                    Dishu paglu 🥺❤️✨</em
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3 -->
+          <div class="story-card" id="card3">
+            <div class="card-inner">
+              <div class="card-image-wrap">
+                <div class="card-img-glow"></div>
+                <div class="card-img-frame">
+                  <img
+                    src="images/photo3.jpeg"
+                    alt="Beautiful Moments"
+                    class="card-img"
+                  />
+                </div>
+                <div class="card-img-label">Beautiful Moments</div>
+                <div class="card-number">03</div>
+              </div>
+              <div class="card-content">
+                <div class="card-emoji">💖🌸</div>
+                <p class="card-text">
+                  Baby, kabhi kabhi sochta hu ki meri life me tumhara aana kitna
+                  special hai. Tumhari ek simple si smile bhi na, dil ko itna
+                  sukoon de deti hai ki saare stress aur problems chhoti lagne
+                  lagti hain.
+                </p>
+                <p class="card-text">
+                  Kabhi kabhi lagta hai rab ne tumhe
+                  <em>bade pyaar se banaya hoga (mere liye)</em>, tabhi tumhari
+                  simplicity aur tumhari smile itni pure lagti hai.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 4 -->
+          <div class="story-card card-right" id="card4">
+            <div class="card-inner">
+              <div class="card-image-wrap">
+                <div class="card-img-glow"></div>
+                <div class="card-img-frame">
+                  <img
+                    src="images/photo4.jpeg"
+                    alt="Ladakh Dreams"
+                    class="card-img"
+                  />
+                </div>
+                <div class="card-img-label">Ladakh Dreams</div>
+                <div class="card-number">04</div>
+              </div>
+              <div class="card-content">
+                <div class="card-emoji">🏍️🏔️</div>
+                <p class="card-text">
+                  Mujhe lagta hai ki meri life me apka aana ek chhoti sa
+                  <em>miracle</em> jaisa hai. Pata nahi kaise par apki ek simple
+                  si smile bhi mera pura din change kar deti hai. Jab ap khush
+                  hoti ho na, to sach me lagta hai sab kuch theek hai. Aur jab
+                  kabhi ap thodi si bhi upset hoti ho to dil karta hai bas tumhe
+                  hug karke sab theek kar du. ❤️
+                </p>
+                <p class="card-text">
+                  Ap sirf beautiful nahi ho meri jaan, apki soul bhi utni hi
+                  beautiful hai. Apka caring nature, apki kindness aur sabko
+                  samajhne ka tareeka… ye sab cheeze apko dusron se alag banati
+                  hain. Aaj kal log itne real nahi hote, par ap ho. Aur shayad
+                  isi liye ap mere dil ke itne close ho.
+                </p>
+                <p class="card-text">
+                  Kabhi kabhi main future imagine karta hu… ek
+                  <strong>long bike ride 🏍️</strong> jisme bas main aur me and
+                  my wifi sorry sorry <em>wife</em> ho. Road lambi ho, hawa
+                  thandi chal rahi ho aur hum dono bas kahin door nikal jaayein
+                  bina kisi tension ke.
+                </p>
+                <p class="card-text">
+                  Mujhe na apko ek din
+                  <strong>Ladakh zaroor le jana hai 🏔️</strong>. Socho pahadon
+                  ke beech bike ride, thandi hawa, aur ap piche baithi hui…
+                  shayad us moment me mujhe lage ki life me isse zyada perfect
+                  kuch ho hi nahi sakta.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 5 -->
+          <div class="story-card" id="card5">
+            <div class="card-inner">
+              <div class="card-image-wrap">
+                <div class="card-img-glow"></div>
+                <div class="card-img-frame">
+                  <img
+                    src="images/photo5.jpeg"
+                    alt="Sweet Moments"
+                    class="card-img"
+                  />
+                </div>
+                <div class="card-img-label">Sweet Moments</div>
+                <div class="card-number">05</div>
+              </div>
+              <div class="card-content">
+                <div class="card-emoji">🍪🍦</div>
+                <p class="card-text">
+                  Phir ap pakka bologi ki kuch sweet bhi chahiye. Tab apki
+                  favourite <strong>Amul ki chizeee</strong> aayengi 🍪 or may
+                  be ice cream, or apke liye main Amul ke apple bhi bnva dunga
+                  unhe bolke.
+                </p>
+                <p class="card-text">
+                  Aur mujhe pata hai ap ek se zyada Amul ki sb chizo ka box
+                  aaram se finish kar dogi vo bhi specially jinme
+                  <em>palm oil nahi hota</em>. 😄
+                </p>
+                <p class="card-text">
+                  Aur agar ride thodi lambi ho gayi, to hum
+                  <strong>Mother Dairy ki ice cream</strong> bhi khayenge 🍦.
+                  Thandi ice cream, thandi hawa aur apki cute si smile honestly
+                  us moment me sab kuch perfect lagega.
+                </p>
+                <p class="card-text">
+                  Aur haan, apke favourite <strong>Too Yum ke chips</strong> bhi
+                  honge 😄. Mujhe pata hai 3-4 packet ap ek din me aaram se
+                  finish kar deti ho aur phir bolti ho
+                  <em>"bas thode se hi khaye hain"</em>.
+                </p>
+                <p class="card-text">
+                  Apki ye chhoti chhoti habits na Baby, mujhe bahut cute lagti
+                  hain ik gussa krta kyunki health na kharab ho, bas isi reason
+                  ki wajah se 😤💕. Kabhi vada pav ke liye excitement, kabhi
+                  cookies ke liye, kabhi ice cream ke liye, kabhi kapdon ke liye
+                  ye sab dekh ke dil aur zyada attach ho jata hai apse.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 6 -->
+          <div class="story-card card-right" id="card6">
+            <div class="card-inner">
+              <div class="card-image-wrap">
+                <div class="card-img-glow"></div>
+                <div class="card-img-frame">
+                  <img
+                    src="images/photo6.jpeg"
+                    alt="Bright Life"
+                    class="card-img"
+                  />
+                </div>
+                <div class="card-img-label">Bright Life</div>
+                <div class="card-number">06</div>
+              </div>
+              <div class="card-content">
+                <div class="card-emoji">✨🌟</div>
+                <p class="card-text">
+                  Sach kahu to ap sirf gorgeous hi nahi ho ap dil se bhi utni hi
+                  <em>sweet ho by heart</em>. Apki simplicity aur apka pure
+                  heart hi apki sabse badi beauty hai. ✨
+                </p>
+                <p class="card-text">
+                  Women's Day par bas itna kehna hai meri sweet si cute seee
+                  baby ko, ki ap jaisi strong, kind aur beautiful women ka milna
+                  meri life ki sabse achhi cheezon me se ek hai. Ap ho to life
+                  thodi aur bright lagti hai.
+                </p>
+                <p class="card-text">
+                  Main bas ye chahta hu ki ap hamesha aise hi khush raho baby,
+                  aise hi haste raho, aur aise hi apni pyari si smile se sabko
+                  happy karti raho but ha pehle apni khushi dekhna dusron ki
+                  nahi baby. 💕
+                </p>
+                <p class="card-text">
+                  Aur yaad rakhna baby chahe <strong>Ladakh ki ride</strong> ho,
+                  vada pav ho, cookies ho, ice cream ho, ya life ke tough
+                  moments… main hamesha apka saath rahunga, meri bike rider
+                  ❤️🏍️✨ BTW before going pehle sikhaunga ap drive karogi bike
+                  aur pahado vali Maggie to apko banani aati hogi!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 7 -->
+          <div class="story-card" id="card7">
+            <div class="card-inner">
+              <div class="card-image-wrap">
+                <div class="card-img-glow"></div>
+                <div class="card-img-frame">
+                  <img
+                    src="images/photo7.jpeg"
+                    alt="Forever Promise"
+                    class="card-img"
+                  />
+                </div>
+                <div class="card-img-label">Forever Promise</div>
+                <div class="card-number">07</div>
+              </div>
+              <div class="card-content">
+                <div class="card-emoji">🤝❤️</div>
+                <p class="card-text">
+                  Baby vese dil se bas ek hi baat nikalti hai
+                  <em
+                    >main apke saath rehna chahta hu, sirf aaj ke liye nahi
+                    balki hamesha ke liye.</em
+                  >
+                  Apki har khushi meri khushi hai aur apki har problem me main
+                  apke saath khada rahunga or apki har problem meri problem hai
+                  and i am trying to be good partner idk hu ya nahi but i am
+                  trying. 💪
+                </p>
+                <p class="card-text">
+                  Main promise karta hu ki main apka
+                  <strong>support system</strong> banunga, chahe situation kaisi
+                  bhi ho. Apki baat dhyan se sununga, ek good listener banunga,
+                  kyunki apki har chhoti badi baat mere liye important hai.
+                </p>
+                <p class="card-text">
+                  Kabhi kabhi galti ho jaye to sorry bolne me bhi kabhi ego nahi
+                  launga, kyunki relationship me jeetne se zyada zaroori hota
+                  hai ek dusre ko samajhna or samajh ke us problem ka solution
+                  nikalna. 🤝
+                </p>
+                <p class="card-text">
+                  Main hamesha apki respect karunga, apki feelings ki value
+                  karunga aur apki har baat ko importance dunga.
+                </p>
+                <p class="card-text">
+                  Aur ek baat jo dil se bol raha hu… mujhe na sirf apse
+                  <strong>shaadi karni hai</strong>, kyunki mujhe lagta hai apke
+                  saath hi meri life complete hogi. Pyaar to main apse waise bhi
+                  sabse zyada karta hu hd se zyada, kyunki meri life ka moon ap
+                  hi ho baby aur chand ke bina raat kabhi poori nahi hoti. 🌙❤️
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 8 -->
+          <div class="story-card card-right" id="card8">
+            <div class="card-inner">
+              <div class="card-image-wrap">
+                <div class="card-img-glow"></div>
+                <div class="card-img-frame">
+                  <img
+                    src="images/photo8.jpeg"
+                    alt="My Moon"
+                    class="card-img"
+                  />
+                </div>
+                <div class="card-img-label">My Moon</div>
+                <div class="card-number">08</div>
+              </div>
+              <div class="card-content">
+                <div class="card-emoji">🌙💞</div>
+                <p class="card-text">
+                  Baby <strong>Happy Women's Day my sweetroll</strong> ❤️ Aaj ka
+                  din bas apke liye hai, kyunki ap sirf ek sundar sushil ldki hi
+                  nahi ho balki ek aisi soul ho jo sabki life me warmth aur
+                  positivity le aati hai. Kabhi kabhi mujhe lagta hai ki shayad
+                  apko khud bhi nahi pata ap kitni special ho.
+                </p>
+                <p class="card-text">
+                  Apki smile meri life ka sukoon hai, apka caring nature mujhe
+                  har baar aur zyada tumse pyaar karne par majboor kar deta hai.
+                  Main dil se chahta hu ki ap hamesha khush raho, aur life me jo
+                  bhi sapne ap dekho unhe pura karne me main hamesha apka saath
+                  khada rahu.
+                </p>
+                <p class="card-text">
+                  Main apko sirf pasand nahi karta cutei… main apko
+                  <em>respect karta hu, samajhna chahta hu</em>, apki har baat
+                  sunna chahta hu aur apki har khushi ko apni khushi banana
+                  chahta hu. Agar kabhi life tough ho jaye na, to bas itna yaad
+                  rakhna ki ap akeli nahi ho main hamesha tumhare saath rahunga,
+                  apka support banke, apka listener banke, aur kabhi kabhi apko
+                  hasane wala pagal sa insaan banke.
+                </p>
+                <p class="card-text">
+                  Aur sach kahu to meri ek chhoti si wish hai… ki ek din jab
+                  future ki baat ho, to us future me
+                  <strong>ap aur main saath ho</strong>. Shayad isliye kyunki
+                  meri duniya ka sabse beautiful part ap ho. Aur haan vo kehte
+                  hain na chand ke bina sitaron ka koi vajood nahi hai ✨ Isliye
+                  aaj Women's Day par bas itna kehna hai meri jaan ko thank you
+                  meri life me aane ke liye, meri duniya ko itna pyaara banane
+                  ke liye. <em>I love you more than you can ever imagine ❤️</em>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 9 -->
+          <div class="story-card" id="card9">
+            <div class="card-inner">
+              <div class="card-image-wrap">
+                <div class="card-img-glow"></div>
+                <div class="card-img-frame">
+                  <img
+                    src="images/photo9.jpeg"
+                    alt="Real Love"
+                    class="card-img"
+                  />
+                </div>
+                <div class="card-img-label">Real Love</div>
+                <div class="card-number">09</div>
+              </div>
+              <div class="card-content">
+                <div class="card-emoji">🍬💫</div>
+                <p class="card-text">
+                  Ap me na sbse special ek cheez hai baby
+                  <em>ap bahut real rehte ho mere liye.</em>
+                </p>
+                <p class="card-text">
+                  Etna pyaar mujhe kisi se nahi mila jitna tumse milta hai.
+                </p>
+                <p class="card-text">
+                  Aur baat rhi sweetness ki…
+                  <strong
+                    >ap vo har barfi ho jo bina mithe ke adhuri hai. 🍬</strong
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FINAL CARD -->
+          <div class="story-card final-card" id="cardFinal">
+            <div class="final-card-inner">
+              <div id="heartExplosion"></div>
+              <div class="final-womens-tag">8 March · Women's Day</div>
+              <div class="final-heart-pulse">❤️</div>
+              <h2 class="final-title">Happy Women's Day</h2>
+              <h3 class="final-name">Dishu</h3>
+              <p class="final-message">
+                and I <span class="love-word">love</span> you<br />and will
+                always ❤️
+              </p>
+              <div class="final-floating-hearts" id="finalHearts"></div>
+              <p class="final-sig">— Always Yours 🌙</p>
+            </div>
+          </div>
+        </div>
+        <!-- end cards-timeline -->
+      </section>
+    </div>
+    <!-- end site-wrapper -->
+
+    <script src="script.js"></script>
+  </body>
+</html>
